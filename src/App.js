@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import Headers from './components/others/Headers';
-import Menu from './components/others/Menu';
-import Notes from './components/others/Notes';
-import Footers from './components/others/Footers';
+import Headers from './components/layouts/Headers';
+import Menu from './components/layouts/Menu';
+import Notes from './components/layouts/Notes';
+import Footers from './components/layouts/Footers';
 
 import Lesson1 from './components/lessons/Lesson1';
 
