@@ -1,248 +1,277 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export default function Notes() {
     return (
         <div>
             <div className="cheatsheet hidden-xs hidden-sm col-md-3">
                 <div className="title">Lesson Notes</div>
+
                 <table className="links">
                     <tbody>
                     <tr className="active">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/introduction_abcs" title="Lesson 1: An Introduction, and the ABCs">abc…</a>
+                            <Link to="/lesson/introduction_abcs"
+                                  title="Lesson 1: An Introduction, and the ABCs">abc…</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/introduction_abcs"
-                               title="Lesson 1: An Introduction, and the ABCs">Letters</a>
+                            <Link to="/lesson/introduction_abcs"
+                                  title="Lesson 1: An Introduction, and the ABCs">Letters</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/letters_and_digits" title="Lesson 1½: The 123s">123…</a>
+                            <Link to="/lesson/letters_and_digits" title="Lesson 1½: The 123s">123…</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/letters_and_digits" title="Lesson 1½: The 123s">Digits</a>
+                            <Link to="/lesson/letters_and_digits" title="Lesson 1½: The 123s">Digits</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/letters_and_digits" title="Lesson 1½: The 123s">\d</a>
+                            <Link to="/lesson/letters_and_digits" title="Lesson 1½: The 123s">\d</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/letters_and_digits" title="Lesson 1½: The 123s">Any Digit</a>
+                            <Link to="/lesson/letters_and_digits" title="Lesson 1½: The 123s">Any Digit</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/letters_and_digits" title="Lesson 1½: The 123s">\D</a>
+                            <Link to="/lesson/letters_and_digits" title="Lesson 1½: The 123s">\D</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/letters_and_digits" title="Lesson 1½: The 123s">Any Non-digit character</a>
+                            <Link to="/lesson/letters_and_digits" title="Lesson 1½: The 123s">Any Non-digit
+                                character</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/wildcards_dot" title="Lesson 2: The Dot">.</a>
+                            <Link to="/lesson/wildcards_dot" title="Lesson 2: The Dot">.</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/wildcards_dot" title="Lesson 2: The Dot">Any Character</a>
+                            <Link to="/lesson/wildcards_dot" title="Lesson 2: The Dot">Any Character</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/wildcards_dot" title="Lesson 2: The Dot">\.</a>
+                            <Link to="/lesson/wildcards_dot" title="Lesson 2: The Dot">\.</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/wildcards_dot" title="Lesson 2: The Dot">Period</a>
+                            <Link to="/lesson/wildcards_dot" title="Lesson 2: The Dot">Period</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/matching_characters"
-                               title="Lesson 3: Matching specific characters">[abc]</a>
+                            <Link to="/lesson/matching_characters"
+                                  title="Lesson 3: Matching specific characters">[abc]</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/matching_characters" title="Lesson 3: Matching specific characters">Only a,
-                                b, or c</a>
+                            <Link to="/lesson/matching_characters" title="Lesson 3: Matching specific characters">Only
+                                a,
+                                b, or c</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/excluding_characters"
-                               title="Lesson 4: Excluding specific characters">[^abc]</a>
+                            <Link to="/lesson/excluding_characters"
+                                  title="Lesson 4: Excluding specific characters">[^abc]</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/excluding_characters" title="Lesson 4: Excluding specific characters">Not
-                                a, b, nor c</a>
+                            <Link to="/lesson/excluding_characters" title="Lesson 4: Excluding specific characters">Not
+                                a, b, nor c</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">[a-z]</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">[a-z]</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">Characters a to z</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">Characters a to
+                                z</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">[0-9]</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">[0-9]</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">Numbers 0 to 9</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">Numbers 0 to 9</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">\w</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">\w</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">Any Alphanumeric
-                                character</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">Any Alphanumeric
+                                character</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">\W</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">\W</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/character_ranges" title="Lesson 5: Character ranges">Any Non-alphanumeric
-                                character</a>
+                            <Link to="/lesson/character_ranges" title="Lesson 5: Character ranges">Any Non-alphanumeric
+                                character</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/repeating_characters" title="Lesson 6: Catching some zzz's">{'{'}m{'}'}</a>
+                            <Link to="/lesson/repeating_characters"
+                                  title="Lesson 6: Catching some zzz's">{'{'}m{'}'}</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/repeating_characters" title="Lesson 6: Catching some zzz's">m
-                                Repetitions</a>
+                            <Link to="/lesson/repeating_characters" title="Lesson 6: Catching some zzz's">m
+                                Repetitions</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/repeating_characters"
-                               title="Lesson 6: Catching some zzz's">{'{'}m,n{'}'}</a>
+                            <Link to="/lesson/repeating_characters"
+                                  title="Lesson 6: Catching some zzz's">{'{'}m,n{'}'}</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/repeating_characters" title="Lesson 6: Catching some zzz's">m to n
-                                Repetitions</a>
+                            <Link to="/lesson/repeating_characters" title="Lesson 6: Catching some zzz's">m to n
+                                Repetitions</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">*</a>
+                            <Link to="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">*</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">Zero or more
-                                repetitions</a>
+                            <Link to="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">Zero or more
+                                repetitions</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">+</a>
+                            <Link to="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">+</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">One or more
-                                repetitions</a>
+                            <Link to="/lesson/kleene_operators" title="Lesson 7: Mr. Kleene, Mr. Kleene">One or more
+                                repetitions</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/optional_characters" title="Lesson 8: Characters optional">?</a>
+                            <Link to="/lesson/optional_characters" title="Lesson 8: Characters optional">?</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/optional_characters" title="Lesson 8: Characters optional">Optional
-                                character</a>
+                            <Link to="/lesson/optional_characters" title="Lesson 8: Characters optional">Optional
+                                character</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/whitespaces" title="Lesson 9: All this whitespace">\s</a>
+                            <Link to="/lesson/whitespaces" title="Lesson 9: All this whitespace">\s</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/whitespaces" title="Lesson 9: All this whitespace">Any Whitespace</a>
+                            <Link to="/lesson/whitespaces" title="Lesson 9: All this whitespace">Any Whitespace</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/whitespaces" title="Lesson 9: All this whitespace">\S</a>
+                            <Link to="/lesson/whitespaces" title="Lesson 9: All this whitespace">\S</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/whitespaces" title="Lesson 9: All this whitespace">Any Non-whitespace
-                                character</a>
+                            <Link to="/lesson/whitespaces" title="Lesson 9: All this whitespace">Any Non-whitespace
+                                character</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/line_beginning_end" title="Lesson 10: Starting and ending">^…$</a>
+                            <Link to="/lesson/line_beginning_end" title="Lesson 10: Starting and ending">^…$</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/line_beginning_end" title="Lesson 10: Starting and ending">Starts and
-                                ends</a>
+                            <Link to="/lesson/line_beginning_end" title="Lesson 10: Starting and ending">Starts and
+                                ends</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/capturing_groups" title="Lesson 11: Match groups">(…)</a>
+                            <Link to="/lesson/capturing_groups" title="Lesson 11: Match groups">(…)</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/capturing_groups" title="Lesson 11: Match groups">Capture Group</a>
+                            <Link to="/lesson/capturing_groups" title="Lesson 11: Match groups">Capture Group</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/nested_groups" title="Lesson 12: Nested groups">(a(bc))</a>
+                            <Link to="/lesson/nested_groups" title="Lesson 12: Nested groups">(a(bc))</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/nested_groups" title="Lesson 12: Nested groups">Capture Sub-group</a>
+                            <Link to="/lesson/nested_groups" title="Lesson 12: Nested groups">Capture Sub-group</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/more_groups" title="Lesson 13: More group work">(.*)</a>
+                            <Link to="/lesson/more_groups" title="Lesson 13: More group work">(.*)</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/more_groups" title="Lesson 13: More group work">Capture all</a>
+                            <Link to="/lesson/more_groups" title="Lesson 13: More group work">Capture all</Link>
                         </td>
                     </tr>
+
                     <tr className="inactive">
                         <td className="status"/>
                         <td className="key">
-                            <a href="/lesson/conditionals" title="Lesson 14: It's all conditional">(abc|def)</a>
+                            <Link to="/lesson/conditionals" title="Lesson 14: It's all conditional">(abc|def)</Link>
                         </td>
                         <td className="description">
-                            <a href="/lesson/conditionals" title="Lesson 14: It's all conditional">Matches abc or
-                                def</a>
+                            <Link to="/lesson/conditionals" title="Lesson 14: It's all conditional">Matches abc or
+                                def</Link>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 }
