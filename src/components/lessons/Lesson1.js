@@ -101,7 +101,7 @@ export default function Lesson1() {
 
                 <div className="solution_hint">
                     Solve the above task to continue on to the next problem, or read the
-                    <a className="show_solution_button" href="#">Solution</a>.
+                    <a className="show_solution_button" href="#"> Solution</a>.
                 </div>
             </div>
             {/* FOOTER */}
