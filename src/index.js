@@ -5,7 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {
     BrowserRouter as Router,
-    Route
+    Route,
+    Switch,
+    Link
 } from "react-router-dom";
 
 const rootEl = document.getElementById('root');
