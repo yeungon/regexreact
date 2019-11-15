@@ -1,17 +1,23 @@
 import React from "react";
+import {    
+    Link
+} from "react-router-dom";
 
 export default function Headers() {
     return (
         <div>
             <div className="header">
-                <a href="/" className="site_logo" title="Home">
-                    <img src="/cs/images/favicon.png" alt="RegexOne icon"/>
-                </a>
-                <a href="/" className="site_name" title="Home">
+                <Link to="/" className="site_logo" title="Home">
+                    <img src="/cs/images/favicon.png" alt="RegexOne icon"/>                
+                </Link>
+                
+                <Link to="/" className="site_name" title="Home">
                     <span>Regex<span className="highlight">One</span></span><br/>
                     <span
-                        className="desc hide-max-md">Learn Regular Expressions with simple, interactive exercises.</span>
-                </a>
+                    className="desc hide-max-md">Learn Regular Expressions with simple, interactive exercises.</span>
+                
+                </Link>
+            
                 <div className="menu_buttons">
                     <a href="/lesson/introduction_abcs" className="menu_button lesson_button" title="Lessons menu">
                         <img src="/cs/images/icon_tutorial.png" alt="Interactive Tutorial"/> <span
