@@ -3,10 +3,9 @@ import './App.css';
 
 import {
     Route,
-    NavLink, 
+    NavLink,
     Switch,
-    Link 
-    
+    Link
 } from "react-router-dom";
 
 import Headers from './components/layouts/Headers';
@@ -29,16 +28,13 @@ export default function App() {
                     {/* LESSON */}
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-9">
-                            
-                        <Switch>
-                            <Route exact path="/" component={Lesson1} />
+                            <Switch>
+                                <Route exact path="/" component={Lesson1}/>
 
-                            <Route exact path="/lesson/introduction_abcs" component={Lesson1} />
-                            
-                            {<Route path="/lesson/letters_and_digits" component={Lesson2} /> }
-                            
-                        </Switch>
-                            
+                                <Route exact path="/lesson/introduction_abcs" component={Lesson1}/>
+
+                                <Route path="/lesson/letters_and_digits" component={Lesson2}/>
+                            </Switch>
                         </div>
                         {/* NOTES */}
                         <Notes/>
