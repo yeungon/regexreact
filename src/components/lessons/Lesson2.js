@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import {Link} from "react-router-dom";
 
 export default function Lesson2(){
+
+	const [count, setCount] = useState(0);
+
+	function handleSolution(){
+		
+		setCount (count + 1);
+
+		alert(count);
+
+	}
 
 	return (
 			<div>
@@ -70,7 +81,7 @@ export default function Lesson2(){
 					</div>
 					</div>
 					<div className="solution_hint">
-					Solve the above task to continue on to the next problem, or read the <a className="show_solution_button" href="#">Solution</a>.
+					Solve the above task to continue on to the next problem, or read the <a onClick = {handleSolution} className="show_solution_button" href="#">Solution</a>.
 					</div>
 				</div>
 				</div>
