@@ -278,7 +278,7 @@ export default class Lesson1 extends Component {
                             <td className='text'>{Parser(matchDataDisplay2)}</td>
                             <td className="result succeeded"><img src={taskImageShow2} alt='To be completed'/></td>
                         </tr>
-                        
+
                         <tr className='problem'>
                             <td className='task'>match</td>
                             <td className='text'>{Parser(matchDataDisplay1)}</td>
@@ -288,19 +288,19 @@ export default class Lesson1 extends Component {
                     </table>
 
                     <div className='input_and_continue row' style={{margin: 0}}>
-                        <form action='/lesson/letters_and_digits' method='get'>
-                            <input className='exercise_input_field col-xs-12 col-sm-9 col-md-9' type='text'
-                                   autoCapitalize='off' autoComplete='off' autoCorrect='off' spellCheck='false'
-                                   placeholder='Type your pattern'
-                                   defaultValue={inputData}
-                                   onKeyUp={this.handleInputData}
-                            />
+                        <input className='exercise_input_field col-xs-12 col-sm-9 col-md-9' type='text'
+                               autoCapitalize='off' autoComplete='off' autoCorrect='off' spellCheck='false'
+                               placeholder='Type your pattern'
+                               defaultValue={inputData}
+                               onKeyUp={this.handleInputData}
+                        />
 
+                        <Link to="/lesson/letters_and_digits">
                             <input className={`continue col-xs-12 col-sm-3 col-md-3 ${continueButton}`} type='submit'
                                    value="Continue ›"
                                    disabled={isDisabled}
                             />
-                        </form>
+                        </Link>
                     </div>
 
                     <div className='row' style={{margin: 0}}>
@@ -311,7 +311,9 @@ export default class Lesson1 extends Component {
                                     <td className='title'>Solution</td>
                                     <td>
                                         <p>
-                                            Try typing the first three characters <a className='editor_val' href='#' onClick={this.handleAddSolution}>abc</a> to see them match all the lines.
+                                            Try typing the first three characters <a className='editor_val' href='#'
+                                                                                     onClick={this.handleAddSolution}>abc</a> to
+                                            see them match all the lines.
                                         </p>
                                     </td>
                                 </tr>
