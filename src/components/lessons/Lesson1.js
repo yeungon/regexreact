@@ -145,13 +145,15 @@ export default class Lesson1 extends Component {
 
         e.preventDefault();
 
+        const result = 'abc';
+
         this.setState({
-            inputData: 'abc',
+            inputData: result,
             continueButton: 'enabled',
             isDisabled: false,
         });
-
-        this.handleMatchData(this.state.inputData);
+        
+        this.handleMatchData(result);
     };
 
     handleMatchData = (inputValue) => {
@@ -292,8 +294,8 @@ export default class Lesson1 extends Component {
                         <input className='exercise_input_field col-xs-12 col-sm-9 col-md-9' type='text'
                                autoCapitalize='off' autoComplete='off' autoCorrect='off' spellCheck='false'
                                placeholder='Type your pattern'
-                               defaultValue={inputData}
-                               onKeyUp={this.handleInputData}
+                               value={inputData}
+                               onChange={this.handleInputData}
                         />
 
                         <Link to="/lesson/letters_and_digits">
