@@ -156,14 +156,18 @@ export default class Lesson1 extends Component {
     };
 
     handleMatchData = (inputValue) => {
-        let result1 = this.handleMatchData1(inputValue);
-        let result2 = this.handleMatchData2(inputValue);
-        let result3 = this.handleMatchData3(inputValue);
+        try {
+            let result1 = this.handleMatchData1(inputValue);
+            let result2 = this.handleMatchData2(inputValue);
+            let result3 = this.handleMatchData3(inputValue);
 
-        if (result1 && result2 && result3) {
-            this.enableContinueButton();
-        } else {
-            this.disableContinueButton();
+            if (result1 && result2 && result3) {
+                this.enableContinueButton();
+            } else {
+                this.disableContinueButton();
+            }
+        } catch (e) {
+            console.log(e.message);
         }
     };
 
