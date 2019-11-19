@@ -144,13 +144,15 @@ export default class Lesson1 extends Component {
     handleAddSolution = (e) => {
         e.preventDefault();
 
+        const result = 'abc';
+
         this.setState({
-            inputData: 'abc',
+            inputData: result,
             continueButton: 'enabled',
             isDisabled: false,
         });
-
-        this.handleMatchData(this.state.inputData);
+        
+        this.handleMatchData(result);
     };
 
     handleMatchData = (inputValue) => {
