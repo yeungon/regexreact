@@ -142,6 +142,7 @@ export default class Lesson1 extends Component {
     };
 
     handleAddSolution = (e) => {
+
         e.preventDefault();
 
         this.setState({

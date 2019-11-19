@@ -1,22 +1,76 @@
-import React, { useState } from 'react';
+import React, {Component} from 'react';
 
 import {Link} from "react-router-dom";
 
-export default function Lesson2(){
+export default class Lesson2 extends Component{
 
-	const [count, setCount] = useState(0);
+	constructor(props) {
+        super(props);
 
-	function handleSolution(){
-		
-		setCount (count + 1);
+        this.state = {
+            inputData: "",
+			isDisplay: false,
+			continueButton : "disabled",
+			isDisabled: true,
+			matchData1: "abc",                
+			matchData2: "abcde", 
+			matchData3: "abcdefg", 
+			matchDataDisplay1: "abc",
+			matchDataDisplay2: "abcde",
+			matchDataDisplay3: "abcefg",
+			taskImageDefault: "/cs/images/task_default.png",
+			taskImageShow1: "/cs/images/task_default.png",
+			taskImageShow2: "/cs/images/task_default.png",
+			taskImageShow3: "/cs/images/task_default.png",
+			taskIncompleted: "/cs/images/task_incomplete.png",
+			taskComplete: "/cs/images/task_complete.png"
+		};
 
-		alert(count);
+		this.handleShowSolution = this.handleShowSolution.bind(this);
+		this.handleAddSolution = this.handleAddSolution.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+    }
+    
+	handleShowSolution(e){
+
+		e.preventDefault();
+
+		this.setState({
+			isDisplay: true,
+        });
 
 	}
 
-	return (
+	// https://stackoverflow.com/questions/30146105/react-input-defaultvalue-doesnt-update-with-state
+	handleChange(event) {
+
+		this.setState({inputData: event.target.value});
+	}
+
+	handleAddSolution(e){
+		e.preventDefault();
+
+		let inputUpdate = this.state.inputData;
+
+		console.log(inputUpdate);
+
+		if(inputUpdate !== null){
+			inputUpdate = 123;
+		}
+		
+		console.log("cập nhật", inputUpdate);
+
+		this.setState({
+			inputData: inputUpdate,
+        });
+		
+	}
+
+	render(){
+	
+			return (
 			<div>
-								<div>
+				<div>
 				{/* LESSON TITLE & BODY */}
 				<div className="lesson">
 					<div className="title">
@@ -65,23 +119,33 @@ export default function Lesson2(){
 					</tbody></table>
 					<div className="input_and_continue row" style={{margin: 0}}>
 					<form action="/lesson/wildcards_dot" method="get">
-						<input className="exercise_input_field col-xs-12 col-sm-9 col-md-9" type="text" autoCapitalize="off" autoComplete="off" autoCorrect="off" spellCheck="false" placeholder="Type your pattern" />
+						<input 
+							className="exercise_input_field col-xs-12 col-sm-9 col-md-9" 
+							type="text" 
+							autoCapitalize="off" 
+							autoComplete="off" 
+							autoCorrect="off" 
+							spellCheck="false" 
+							placeholder="Type your pattern" 
+							value={this.state.inputData}
+							onChange={this.handleChange}
+							/>
 						<input className="continue disabled col-xs-12 col-sm-3 col-md-3" disabled type="submit" defaultValue="Continue ›" />
 					</form>
 					</div>
-					<div className="row" style={{margin: 0}}>
-					<div className="solution col-xs-12">
+					<div className="row" style={{margin: 0}}>					
+					<div className='solution col-xs-12' style={{display: this.state.isDisplay ? 'block' : 'none'}}>
 						<table>
 						<tbody><tr>
 							<td className="title">Solution</td>
-							<td><p>Try typing the common numbers <a className="editor_val" href="#">123</a> from all the lines to see 
+							<td><p>Try typing the common numbers <a onClick = {this.handleAddSolution} className="editor_val" href="#">123</a> from all the lines to see 
 								them match.</p></td>
 							</tr>
 						</tbody></table>
 					</div>
 					</div>
 					<div className="solution_hint">
-					Solve the above task to continue on to the next problem, or read the <a onClick = {handleSolution} className="show_solution_button" href="#">Solution</a>.
+					Solve the above task to continue on to the next problem, or read the <a onClick = {this.handleShowSolution} className="show_solution_button" href="#">Solution</a>.
 					</div>
 				</div>
 				</div>
@@ -96,4 +160,6 @@ export default function Lesson2(){
 
 			</div>
 		);
+
+	}
 }
