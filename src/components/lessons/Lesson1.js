@@ -17,12 +17,12 @@ export default class Lesson1 extends Component {
             matchDataDisplay1: 'abc',
             matchDataDisplay2: 'abcde',
             matchDataDisplay3: 'abcefg',
-            taskImageDefault: 'https://regexone.com/cs/images/task_default.png',
-            taskImageShow1: 'https://regexone.com/cs/images/task_default.png',
-            taskImageShow2: 'https://regexone.com/cs/images/task_default.png',
-            taskImageShow3: 'https://regexone.com/cs/images/task_default.png',
-            taskIncompleted: 'https://regexone.com/cs/images/task_incomplete.png',
-            taskComplete: 'https://regexone.com/cs/images/task_complete.png'
+            taskImageDefault: '/cs/images/task_default.png',
+            taskImageShow1: '/cs/images/task_default.png',
+            taskImageShow2: '/cs/images/task_default.png',
+            taskImageShow3: '/cs/images/task_default.png',
+            taskIncompleted: '/cs/images/task_incomplete.png',
+            taskComplete: '/cs/images/task_complete.png'
         };
     }
 
@@ -157,14 +157,18 @@ export default class Lesson1 extends Component {
     };
 
     handleMatchData = (inputValue) => {
-        let result1 = this.handleMatchData1(inputValue);
-        let result2 = this.handleMatchData2(inputValue);
-        let result3 = this.handleMatchData3(inputValue);
+        try {
+            let result1 = this.handleMatchData1(inputValue);
+            let result2 = this.handleMatchData2(inputValue);
+            let result3 = this.handleMatchData3(inputValue);
 
-        if (result1 && result2 && result3) {
-            this.enableContinueButton();
-        } else {
-            this.disableContinueButton();
+            if (result1 && result2 && result3) {
+                this.enableContinueButton();
+            } else {
+                this.disableContinueButton();
+            }
+        } catch (e) {
+            console.log(e.message);
         }
     };
 

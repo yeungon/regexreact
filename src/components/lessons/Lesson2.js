@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import {Link} from "react-router-dom";
 
+import Parser from 'html-react-parser';
+
 export default class Lesson2 extends Component{
 
 	constructor(props) {
@@ -12,23 +14,25 @@ export default class Lesson2 extends Component{
 			isDisplay: false,
 			continueButton : "disabled",
 			isDisabled: true,
-			matchData1: "abc",                
-			matchData2: "abcde", 
-			matchData3: "abcdefg", 
-			matchDataDisplay1: "abc",
-			matchDataDisplay2: "abcde",
-			matchDataDisplay3: "abcefg",
+			matchData1: "abc123xyz",                
+			matchData2: 'define "123"', 
+			matchData3: "var g = 123", 
+			matchDataDisplay1: "abc123xyz",
+			matchDataDisplay2: 'define "123"',
+			matchDataDisplay3: "var g = 123",
 			taskImageDefault: "/cs/images/task_default.png",
 			taskImageShow1: "/cs/images/task_default.png",
 			taskImageShow2: "/cs/images/task_default.png",
 			taskImageShow3: "/cs/images/task_default.png",
 			taskIncompleted: "/cs/images/task_incomplete.png",
-			taskComplete: "/cs/images/task_complete.png"
+			taskComplete: "/cs/images/task_complete.png",			
 		};
 
-		this.handleShowSolution = this.handleShowSolution.bind(this);
-		this.handleAddSolution = this.handleAddSolution.bind(this);
-		this.handleChange = this.handleChange.bind(this);
+		// Bind or not bind, it is optional
+		this.handleShowSolution = this.handleShowSolution.bind(this);		
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleMatchDataAll = this.handleMatchDataAll.bind(this);
+		this.handleMatchDataCheck = this.handleMatchDataCheck.bind(this);
     }
     
 	handleShowSolution(e){
@@ -37,34 +41,139 @@ export default class Lesson2 extends Component{
 
 		this.setState({
 			isDisplay: true,
+
         });
 
 	}
 
-	// https://stackoverflow.com/questions/30146105/react-input-defaultvalue-doesnt-update-with-state
-	handleChange(event) {
+	// No need to bind when using arrow
+	handleAddSolution = async (e)=>{
 
-		this.setState({inputData: event.target.value});
-	}
-
-	handleAddSolution(e){
 		e.preventDefault();
 
-		let inputUpdate = this.state.inputData;
-
-		console.log(inputUpdate);
-
-		if(inputUpdate !== null){
-			inputUpdate = 123;
-		}
-		
-		console.log("cập nhật", inputUpdate);
-
-		this.setState({
-			inputData: inputUpdate,
+		let inputUpdate = 123;
+								
+		await this.setState({
+				inputData: inputUpdate,
+				continueButton: 'enabled',
+	            isDisabled: false,
         });
+
+		this.handleInputRun();        
+			
+	}
+	
+
+	handleInputChange = async function(e) {
+		// https://stackoverflow.com/questions/33088482/onchange-in-react-doesnt-capture-the-last-character-of-text
+		// setState is async --> need use async/promise
+		let inputByUser = e.target.value;
+
+		await this.setState({
+			inputData: inputByUser
+		});
+
+		// Reset when the input is empty
+		if (0 === inputByUser.length) {
+            await this.setState({
+                taskImageShow1: this.state.taskImageDefault,
+                taskImageShow2: this.state.taskImageDefault,
+                taskImageShow3: this.state.taskImageDefault,
+                continueButton: 'disabled',
+                isDisabled: true,
+                matchDataDisplay1: this.state.matchData1,
+                matchDataDisplay2: this.state.matchData2,
+                matchDataDisplay3: this.state. matchData3,
+            });
+
+            return;
+        }		
+		
+		this.handleInputRun();			
 		
 	}
+
+	handleInputRun = ()=>{
+
+		try {
+		  this.handleMatchDataCheck();
+		}
+		catch(e) {
+
+		  console.log(e.message);
+		}	
+
+	}
+
+	handleMatchDataCheck(){
+
+		const a = this.handleMatchDataAll(this.state.matchData1, '1', this.state.taskIncompleted)
+
+		const b = this.handleMatchDataAll(this.state.matchData2, '2',  this.state.taskIncompleted)
+
+		const c = this.handleMatchDataAll(this.state.matchData3, '3', this.state.taskIncompleted)
+
+		if(a && b &&c){
+			this.setState({				
+				continueButton: 'enabled',
+	            isDisabled: false,
+        	});
+		}else{
+			this.setState({				
+				continueButton: 'disabled',
+	            isDisabled: true,
+        	});
+		}
+
+	}
+	
+     handleMatchDataAll(matchData, number, taskIncompleted){
+       
+        let matchDataDisplay= 'matchDataDisplay' + number;
+
+        let taskImageShow = 'taskImageShow' + number;
+
+         const regex = new RegExp(this.state.inputData);
+
+        let result = regex.test(matchData);                              
+
+        if (result === true) {
+           	
+           	this.setState({
+
+                [taskImageShow]: this.state.taskComplete,
+                
+            });
+
+            let matchString = matchData.match(regex);            
+            
+            if (matchString !== null) {
+                        
+                this.setState({
+                	// pass state as a string in a []: `matchDataDisplay` is a string
+                    [matchDataDisplay]: matchData.replace(regex, `<span class="match_succeeded">${matchString[0]}</span>`),
+                });
+
+                console.log(matchString[0]);
+
+            } else {
+
+                console.log("Don't match");
+
+            }
+
+            return result;
+
+        } else {
+
+            this.setState({
+
+                [taskImageShow]: taskIncompleted,
+
+                [matchDataDisplay]: matchData,
+            });
+        }
+    };
 
 	render(){
 	
@@ -103,18 +212,18 @@ export default class Lesson2 extends Component{
 						</tr>
 						<tr className="problem">
 						<td className="task">match</td>
-						<td className="text">abc123xyz</td>
-						<td className="result"><img src="/cs/images/task_default.png" alt="To be completed" /></td>
+						<td className='text'>{Parser(this.state.matchDataDisplay1)}</td>
+						<td className="result succeeded"><img src={this.state.taskImageShow1} alt='To be completed'/></td>
 						</tr>
 						<tr className="problem">
 						<td className="task">match</td>
-						<td className="text">define "123"</td>
-						<td className="result"><img src="/cs/images/task_default.png" alt="To be completed" /></td>
+						<td className='text'>{Parser(this.state.matchDataDisplay2)}</td>
+						<td className="result succeeded"><img src={this.state.taskImageShow2} alt='To be completed'/></td>
 						</tr>
 						<tr className="problem">
-						<td className="task">match</td>
-						<td className="text">var g = 123;</td>
-						<td className="result"><img src="/cs/images/task_default.png" alt="To be completed" /></td>
+						<td className="task">match</td>						
+						<td className='text'>{Parser(this.state.matchDataDisplay3)}</td>
+						<td className="result succeeded"><img src={this.state.taskImageShow3} alt='To be completed'/></td>
 						</tr>
 					</tbody></table>
 					<div className="input_and_continue row" style={{margin: 0}}>
@@ -128,9 +237,17 @@ export default class Lesson2 extends Component{
 							spellCheck="false" 
 							placeholder="Type your pattern" 
 							value={this.state.inputData}
-							onChange={this.handleChange}
+							onChange={this.handleInputChange}
 							/>
-						<input className="continue disabled col-xs-12 col-sm-3 col-md-3" disabled type="submit" defaultValue="Continue ›" />
+						
+						<Link to="/lesson/wildcards_dot" >
+								<input 
+								className={`continue col-xs-12 col-sm-3 col-md-3 ${this.state.continueButton}`} 
+								disabled={this.state.isDisabled}
+								type="submit" 
+								value="Continue ›" />               
+                		</Link>
+
 					</form>
 					</div>
 					<div className="row" style={{margin: 0}}>					
@@ -152,7 +269,10 @@ export default class Lesson2 extends Component{
 
 				{/* FOOTER */}
 				<div className="footer col-xs-12 col-sm-12 col-md-6">
-				Next – <a href="/lesson/wildcards_dot" title="Lesson 2: The Dot">Lesson 2: The Dot</a><br />
+				Next – <Link to="/lesson/wildcards_dot" title="Lesson 1: An Introduction, and the ABCs">
+								Lesson 2: The Dot               
+                			  </Link><br />
+
 				Previous –    <Link to="/lesson/introduction_abcs" title="Lesson 1: An Introduction, and the ABCs">
 								Lesson 1: An Introduction, and the ABCs                
                 			  </Link>
