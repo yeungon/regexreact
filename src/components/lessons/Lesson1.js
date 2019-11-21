@@ -17,12 +17,12 @@ export default class Lesson1 extends Component {
             matchDataDisplay1: 'abc',
             matchDataDisplay2: 'abcde',
             matchDataDisplay3: 'abcefg',
-            taskImageDefault: 'https://regexone.com/cs/images/task_default.png',
-            taskImageShow1: 'https://regexone.com/cs/images/task_default.png',
-            taskImageShow2: 'https://regexone.com/cs/images/task_default.png',
-            taskImageShow3: 'https://regexone.com/cs/images/task_default.png',
-            taskIncompleted: 'https://regexone.com/cs/images/task_incomplete.png',
-            taskComplete: 'https://regexone.com/cs/images/task_complete.png'
+            taskImageDefault: '/cs/images/task_default.png',
+            taskImageShow1: '/cs/images/task_default.png',
+            taskImageShow2: '/cs/images/task_default.png',
+            taskImageShow3: '/cs/images/task_default.png',
+            taskIncompleted: '/cs/images/task_incomplete.png',
+            taskComplete: '/cs/images/task_complete.png'
         };
     }
 
@@ -142,6 +142,7 @@ export default class Lesson1 extends Component {
     };
 
     handleAddSolution = (e) => {
+
         e.preventDefault();
 
         const result = 'abc';
