@@ -42,19 +42,15 @@ export default class Lesson1 extends Component {
                 this.setState({
                     matchDataDisplay1: matchData1.replace(regex, `<span class="match_succeeded">${matchString[0]}</span>`),
                 });
-
-                console.log(matchString[0]);
-            } else {
-                console.log("Don't match");
             }
 
             return result;
-        } else {
-            this.setState({
-                taskImageShow1: taskIncompleted,
-                matchDataDisplay1: matchData1,
-            });
         }
+
+        this.setState({
+            taskImageShow1: taskIncompleted,
+            matchDataDisplay1: matchData1,
+        });
     };
 
     handleMatchData2 = (inputValue, state = this.state) => {
@@ -73,19 +69,15 @@ export default class Lesson1 extends Component {
                 this.setState({
                     matchDataDisplay2: matchData2.replace(regex, `<span class="match_succeeded">${matchString[0]}</span>`),
                 });
-
-                console.log(matchString[0]);
-            } else {
-                console.log("Don't match");
             }
 
             return result;
-        } else {
-            this.setState({
-                taskImageShow2: taskIncompleted,
-                matchDataDisplay2: matchData2,
-            });
         }
+
+        this.setState({
+            taskImageShow2: taskIncompleted,
+            matchDataDisplay2: matchData2,
+        });
     };
 
     handleMatchData3 = (inputValue, state = this.state) => {
@@ -104,19 +96,15 @@ export default class Lesson1 extends Component {
                 this.setState({
                     matchDataDisplay3: matchData3.replace(regex, `<span class="match_succeeded">${matchString[0]}</span>`),
                 });
-
-                console.log(matchString[0]);
-            } else {
-                console.log("Don't match");
             }
 
             return result;
-        } else {
-            this.setState({
-                taskImageShow3: taskIncompleted,
-                matchDataDisplay3: matchData3,
-            });
         }
+
+        this.setState({
+            taskImageShow3: taskIncompleted,
+            matchDataDisplay3: matchData3,
+        });
     };
 
     handleShowSolution = (e) => {
@@ -142,7 +130,6 @@ export default class Lesson1 extends Component {
     };
 
     handleAddSolution = (e) => {
-
         e.preventDefault();
 
         const result = 'abc';
@@ -318,8 +305,8 @@ export default class Lesson1 extends Component {
                                     <td className='title'>Solution</td>
                                     <td>
                                         <p>
-                                            Try typing the first three characters <a className='editor_val' href='#'
-                                                                                     onClick={this.handleAddSolution}>abc</a> to
+                                            Try typing the first three characters
+                                            {' '}<a href="/#" className='editor_val' onClick={this.handleAddSolution}>abc</a> to
                                             see them match all the lines.
                                         </p>
                                     </td>
@@ -331,7 +318,7 @@ export default class Lesson1 extends Component {
 
                     <div className='solution_hint'>
                         Solve the above task to continue on to the next problem, or read the
-                        <a className='show_solution_button' href="#" onClick={this.handleShowSolution}> Solution</a>.
+                        <a className='show_solution_button' href="/#" onClick={this.handleShowSolution}> Solution</a>.
                     </div>
                 </div>
                 {/* FOOTER */}
@@ -342,9 +329,7 @@ export default class Lesson1 extends Component {
 
                 <div className='footer ralign col-xs-12 col-md-6'>
                     Find RegexOne useful? Please consider <br/>
-                    <a className='paypal_donation_button' href='#' title='Paypal donation'>Donating ($4) via
-                        Paypal</a> to
-                    support our site.
+                    <a href="/#" className='paypal_donation_button' title='Paypal donation'>Donating ($4) via Paypal</a> to support our site.
                 </div>
             </div>
         );
