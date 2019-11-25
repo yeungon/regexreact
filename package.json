@@ -9,6 +9,9 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.1"
   },
+  "devDependencies": {
+    "husky": "^4.0.0-beta.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "dev": "BROWSER=none react-scripts start",

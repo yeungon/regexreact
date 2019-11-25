@@ -152,7 +152,7 @@ export default class Lesson1 extends Component {
             continueButton: 'enabled',
             isDisabled: false,
         });
-        
+
         this.handleMatchData(result);
     };
 
