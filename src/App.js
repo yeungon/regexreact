@@ -16,6 +16,8 @@ import Footers from './components/layouts/Footers';
 import Lesson1 from './components/lessons/Lesson1';
 import Lesson2 from './components/lessons/Lesson2';
 
+import Lesson4 from './components/lessons/Lesson4';
+
 export default function App() {
     return (
         <div>
@@ -34,6 +36,8 @@ export default function App() {
                                 <Route exact path="/lesson/introduction_abcs" component={Lesson1}/>
 
                                 <Route path="/lesson/letters_and_digits" component={Lesson2}/>
+
+                                <Route path="/lesson/matching_characters" component={Lesson4}/>
                             </Switch>
                         </div>
                         {/* NOTES */}
