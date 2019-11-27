@@ -10,12 +10,18 @@ import {
     Link
 } from "react-router-dom";
 
+import store1 from "./containers/lesson6/store";
+
+import {Provider} from "react-redux";
+
 const rootEl = document.getElementById('root');
 
 render(
-    <Router>
-        <Route path="/" component={App}/>
-    </Router>,
+    <Provider store = {store1}>
+        <Router>
+            <Route path="/" component={App}/>
+        </Router>
+    </Provider>,
     rootEl
 );
 
