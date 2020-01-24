@@ -10,14 +10,13 @@ import {
     Link
 } from "react-router-dom";
 
-import store1 from "./containers/lesson6/store";
-
+import store from "./rootStore";
 import {Provider} from "react-redux";
 
 const rootEl = document.getElementById('root');
 
 render(
-    <Provider store = {store1}>
+    <Provider store = {store}>
         <Router>
             <Route path="/" component={App}/>
         </Router>

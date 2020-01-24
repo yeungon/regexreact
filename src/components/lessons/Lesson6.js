@@ -3,22 +3,17 @@
 //https://medium.com/better-programming/my-awesome-react-redux-structure-6044e5007e22
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Parser from "html-react-parser";
 
 class Lesson6 extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     render() {
         return (
             <div>
                 <div>
                     {/* LESSON TITLE & BODY */}
                     <div className="lesson">
-                        <div className="title">
-                            Lesson 5: Character ranges {this.props.name}
-                        </div>
+                        <div className="title">Lesson 5: Character ranges</div>
                         <div className="body">
                             <p>
                                 We just learned how to create a pattern that
@@ -75,60 +70,84 @@ class Lesson6 extends Component {
                                 </tr>
                                 <tr className="problem">
                                     <td className="task">match</td>
-                                    <td className="text">Ana</td>
-                                    <td className="result">
+                                    <td className="text">
+                                        {Parser(
+                                            this.props.l6.matchDataDisplay1
+                                        )}
+                                    </td>
+                                    <td className="result succeeded">
                                         <img
-                                            src="/cs/images/task_default.png"
+                                            src={this.props.l6.taskImageShow1}
                                             alt="To be completed"
                                         />
                                     </td>
                                 </tr>
                                 <tr className="problem">
                                     <td className="task">match</td>
-                                    <td className="text">Bob</td>
-                                    <td className="result">
+                                    <td className="text">
+                                        {Parser(
+                                            this.props.l6.matchDataDisplay2
+                                        )}
+                                    </td>
+                                    <td className="result succeeded">
                                         <img
-                                            src="/cs/images/task_default.png"
+                                            src={this.props.l6.taskImageShow2}
                                             alt="To be completed"
                                         />
                                     </td>
                                 </tr>
                                 <tr className="problem">
                                     <td className="task">match</td>
-                                    <td className="text">Cpc</td>
-                                    <td className="result">
+                                    <td className="text">
+                                        {Parser(
+                                            this.props.l6.matchDataDisplay3
+                                        )}
+                                    </td>
+                                    <td className="result succeeded">
                                         <img
-                                            src="/cs/images/task_default.png"
+                                            src={this.props.l6.taskImageShow3}
                                             alt="To be completed"
                                         />
                                     </td>
                                 </tr>
                                 <tr className="problem">
                                     <td className="task">skip</td>
-                                    <td className="text">aax</td>
+                                    <td className="text">
+                                        {Parser(this.props.l6.skipDataDisplay1)}
+                                    </td>
                                     <td className="result">
                                         <img
-                                            src="/cs/images/task_default.png"
+                                            src={
+                                                this.props.l6.taskImageShowSkip1
+                                            }
                                             alt="To be completed"
                                         />
                                     </td>
                                 </tr>
                                 <tr className="problem">
                                     <td className="task">skip</td>
-                                    <td className="text">bby</td>
+                                    <td className="text">
+                                        {Parser(this.props.l6.skipDataDisplay2)}
+                                    </td>
                                     <td className="result">
                                         <img
-                                            src="/cs/images/task_default.png"
+                                            src={
+                                                this.props.l6.taskImageShowSkip2
+                                            }
                                             alt="To be completed"
                                         />
                                     </td>
                                 </tr>
                                 <tr className="problem">
                                     <td className="task">skip</td>
-                                    <td className="text">ccz</td>
+                                    <td className="text">
+                                        {Parser(this.props.l6.skipDataDisplay3)}
+                                    </td>
                                     <td className="result">
                                         <img
-                                            src="/cs/images/task_default.png"
+                                            src={
+                                                this.props.l6.taskImageShowSkip3
+                                            }
                                             alt="To be completed"
                                         />
                                     </td>
@@ -151,17 +170,31 @@ class Lesson6 extends Component {
                                     autoCorrect="off"
                                     spellCheck="false"
                                     placeholder="Type your pattern"
+                                    value={this.props.l6.inputData}
+                                    onChange={this.props.handleInputChange}
                                 />
-                                <input
-                                    className="continue disabled col-xs-12 col-sm-3 col-md-3"
-                                    disabled
-                                    type="submit"
-                                    defaultValue="Continue ›"
-                                />
+                                <Link
+                                    to="/lesson/repeating_characters"
+                                    title="Lesson 6: Catching some zzz's"
+                                >
+                                    <input
+                                        className={`continue col-xs-12 col-sm-3 col-md-3 ${this.props.l6.continueButton}`}
+                                        disabled={this.props.l6.isDisabled}
+                                        type="submit"
+                                        defaultValue="Continue ›"
+                                    />
+                                </Link>
                             </form>
                         </div>
                         <div className="row" style={{ margin: 0 }}>
-                            <div className="solution col-xs-12">
+                            <div
+                                className="solution col-xs-12"
+                                style={{
+                                    display: this.props.l6.isDisplay
+                                        ? "block"
+                                        : "none"
+                                }}
+                            >
                                 <table>
                                     <tbody>
                                         <tr>
@@ -175,6 +208,10 @@ class Lesson6 extends Component {
                                                     <a
                                                         className="editor_val"
                                                         href="#"
+                                                        onClick={
+                                                            this.props
+                                                                .showSolution
+                                                        }
                                                     >
                                                         [A-C][n-p][a-c]
                                                     </a>{" "}
@@ -190,7 +227,11 @@ class Lesson6 extends Component {
                         <div className="solution_hint">
                             Solve the above task to continue on to the next
                             problem, or read the{" "}
-                            <a className="show_solution_button" href="#">
+                            <a
+                                onClick={this.props.show}
+                                className="show_solution_button"
+                                href="#"
+                            >
                                 Solution
                             </a>
                             .
@@ -199,20 +240,20 @@ class Lesson6 extends Component {
                     {/* FOOTER */}
                     <div className="footer col-xs-12 col-sm-12 col-md-6">
                         Next –{" "}
-                        <a
-                            href="/lesson/repeating_characters"
+                        <Link
+                            to="/lesson/repeating_characters"
                             title="Lesson 6: Catching some zzz's"
                         >
                             Lesson 6: Catching some zzz's
-                        </a>
+                        </Link>
                         <br />
                         Previous –{" "}
-                        <a
-                            href="/lesson/excluding_characters"
+                        <Link
+                            to="/lesson/excluding_characters"
                             title="Lesson 4: Excluding specific characters"
                         >
                             Lesson 4: Excluding specific characters
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -222,9 +263,29 @@ class Lesson6 extends Component {
 
 const mapStatetoProps = (state, ownProps) => {
     return {
-        // name will be called using props.name of this app.js
-        name: state.name
+        l6: state.l6
     };
 };
 
-export default connect(mapStatetoProps)(Lesson6);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        show: e => {
+            e.preventDefault();
+            dispatch({ type: "SHOW_SOLUTION" });
+        },
+
+        showSolution: e => {
+            e.preventDefault();
+            dispatch({ type: "SHOW_SOLUTION_ONE" });
+        },
+        handleInputChange: e => {
+            e.preventDefault();
+
+            let inputByUser = e.target.value;
+
+            dispatch({ type: "HANDLE_INPUT_CHANGE", inputByUser: inputByUser });
+        }
+    };
+};
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Lesson6);
